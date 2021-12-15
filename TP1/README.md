@@ -34,3 +34,20 @@ Maintenant vous devriez voir autant de terminaux que de machines sur le schéma 
 #### Le dossier `shared`
 Si par défaut le lancement du LAB vous créé un dossier `shared`, pas de panique c'est normal. Dans le cas contraire, si toutefois vous en avez besoin vous pouvez toujours le créer et Kathara le montera automatiquement aux machines lors du démarrage du LAB.
 
+#### La connectivité
+Maintenant, vous souhaitez peut-être faire un `ping` entre machines, mais vous ne pourrez pas... On n'a pas encore ajouté les adresses IP !
+
+## Les fichiers de démarrage, ou fichier `.startup`
+Les fichiers de démarrage sont nommés de la manière suivante : `machine.startup` et sont des fichiers contenant des instructions bash qui vont s'exécuter au lancement du lab sur chaque machine concernée.
+
+C'est celui-ci que l'on va utiliser pour ajouter par exemple les adresses IP, les routes...
+
+### Les IP et les routes
+Pour ajouter les IP, on définie une adresse et son masque sur une interface, puis on active cette interface
+#### pca.startup
+Selon la topologie, la route par défaut de cette machine a besoin d'être R0
+```conf
+ip a add 192.168.1.1/24 dev eth0
+ip link set eth0 up
+ip route add default via 192.168.1.254
+```
