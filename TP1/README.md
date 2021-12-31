@@ -82,6 +82,6 @@ ip route add default via 172.16.7.254
 Bien ! Nos 4 machines sont maintenant configurées, il ne reste plus qu'à configurer nos routeurs.
 
 Les spécificités indiquées dans le sujet de TP sont les suivantes :
-    * R0 doit utiliser R1 comme routeur par défaut
-    * R1 doit utiliser R0 comme routeur pour accéder au réseau 192.168.1.0/24
+    - R0 doit utiliser R1 comme routeur par défaut
+    - R1 doit utiliser R0 comme routeur pour accéder au réseau 192.168.1.0/24
 
