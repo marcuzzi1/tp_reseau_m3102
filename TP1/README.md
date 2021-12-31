@@ -63,5 +63,10 @@ ip route add default via 192.168.1.254
 #### pcc.startup
 Pour cette machine, c'est un peu plus spécial puisqu'elle est contenue dans un réseau où se trouvent R0 et R1. Il va donc falloir mettre en place une route pour les réseaux de chacun. J'ai donc fait le choix de définir R1 en routeur par défaut et d'ajouter une route vers le réseau 192.168.1.0/24 par R0.
 ```conf
-
+ip a add 172.16.5.1/24 dev eth0
+ip link set eth0 up
+ip route add default via 172.16.5.254
+ip route add 192.168.1.0/24 via 172.16.5.253
 ```
+Avec cette configuration vous devriez être capable d'accéder à PCA et PCB depuis PCC me direz-vous... Eh bien non ! Tant que l'on n'a pas configuré les routeurs cette manipulation est impossible.
+
