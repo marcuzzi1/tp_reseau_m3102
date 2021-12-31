@@ -44,9 +44,9 @@ Les fichiers de démarrage sont nommés de la manière suivante : `machine.start
 C'est celui-ci que l'on va utiliser pour ajouter par exemple les adresses IP, les routes...
 
 ### Les IP et les routes
-Pour ajouter les IP, on définie une adresse et son masque sur une interface, puis on active cette interface
+Pour ajouter les IP, on définie une adresse et son masque sur une interface, puis on active cette interface.
 #### pca.startup
-Selon la topologie, la route par défaut de cette machine a besoin d'être R0
+Selon la topologie, la route par défaut de cette machine a besoin d'être R0.
 ```conf
 ip a add 192.168.1.1/24 dev eth0
 ip link set eth0 up
@@ -54,7 +54,7 @@ ip route add default via 192.168.1.254
 ```
 
 #### pcb.startup
-Ici, même chose que pour PCA, c'est R0 que nous mettrons en routeur par défaut
+Ici, même chose que pour PCA, c'est R0 que nous mettrons en routeur par défaut.
 ```conf
 ip a add 192.168.1.2/24 dev eth0
 ip link set eth0 up
@@ -70,4 +70,18 @@ ip route add default via 172.16.5.254
 ip route add 192.168.1.0/24 via 172.16.5.253
 ```
 Avec cette configuration vous devriez être capable d'accéder à PCA et PCB depuis PCC me direz-vous... Eh bien non ! Tant que l'on n'a pas configuré les routeurs cette manipulation est impossible.
+
+#### pcd.startup
+Rien de compliqué ici, on met son adresse IP sur eth0 et on ajoute R1 en routeur par défaut.
+```conf
+ip a add 172.16.7.1/24 dev eth0
+ip link set eth0 up
+ip route add default via 172.16.7.254
+```
+
+Bien ! Nos 4 machines sont maintenant configurées, il ne reste plus qu'à configurer nos routeurs.
+
+Les spécificités indiquées dans le sujet de TP sont les suivantes :
+    * R0 doit utiliser R1 comme routeur par défaut
+    * R1 doit utiliser R0 comme routeur pour accéder au réseau 192.168.1.0/24
 
