@@ -36,6 +36,7 @@ Si par défaut le lancement du LAB vous créé un dossier `shared`, pas de paniq
 
 #### La connectivité
 Maintenant, vous souhaitez peut-être faire un `ping` entre machines, mais vous ne pourrez pas... On n'a pas encore ajouté les adresses IP !
+
 ---
 ## Les fichiers de démarrage, ou fichier `.startup`
 Les fichiers de démarrage sont nommés de la manière suivante : `machine.startup` et sont des fichiers contenant des instructions bash qui vont s'exécuter au lancement du lab sur chaque machine concernée.
